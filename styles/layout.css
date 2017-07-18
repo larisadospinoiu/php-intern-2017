@@ -41,7 +41,7 @@ div.wrapper{display:block; width:960px; margin:0 auto; padding:0; text-align:lef
 
 .row1, .row1 a{color:#979797; background-color:#FFFFFF;}
 .row2{color:#979797; background-color:#FFFFFF;}
-.row2 a{color:#FF9900; background-color:#FFFFFF;}
+.row2 a{color:#4f247c; background-color:#FFFFFF;}
 .row3{border-top:1px solid #DEDEDE;}
 .row3, .row3 a{color:#979797; background-color:#FFFFFF;}
 
@@ -190,7 +190,7 @@ form {
   max-width: 300px;
   margin: 10px auto;
   padding: 10px 20px;
-  background: #f4f7f8;
+  background: #000000;
   border-radius: 8px;
 }
 
@@ -239,13 +239,13 @@ select {
 button {
   padding: 19px 39px 18px 39px;
   color: #FFF;
-  background-color: #FF9900;
+  background-color: #22427C;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   border-radius: 5px;
   width: 100%;
-  border: 1px solid #FF9900;
+  border: 1px solid #ffffff;
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
