@@ -1,14 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<title>Login</title>
+<title>Roweb</title>
 <meta charset="iso-8859-1">
+
 <link rel="stylesheet" href="styles/layout.css" type="text/css">
+<link rel="stylesheet" href="styles/curs2.css" type="text/css">
+<style>
+	h1 {
+		margin: 20px 0;
+	}
+</style>
 <link rel="stylesheet" href="styles/jquery.bxslider.css" type="text/css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="scripts/jquery.bxslider.js"></script>
+
+<script>
+	$(function(){
+		//document.getElementById("login_heading").innerHTML = "Please log in";
+		
+		//var elementul1, elementul2,  titlu;
+		
+		//elementul1 = $(".login_heading");
+		//elementul2 = $("#subtitle");
+		
+
+		changeTitle($(".login_heading"), $(".login_heading").html());
+		changeTitle($("#subtitle"), $("#subtitle").html());
+		
+		function changeTitle(elementul, titlu)
+		{
+			titlu = titlu + " sufix";
+			elementul.html(titlu);
+		}
+	});
+</script>
+<script>
+  function validate()
+{
+	var pass=$("#login_pass").val();
+	var password_regex1=/([a-z].*[A-Z])|([A-Z].*[a-z])/;
+	var password_regex2=/([0-9])/;
+	var password_regex3=/([!,%,&,@,#,$,^,*,?,_,~])/;
+	
+	if(password_regex1.test(pass)==false)
+	{
+		alert("Please enter at least one uppercase letter");
+		return false;
+	}
+	else if(password_regex2.test(pass)==false)
+	{
+		alert("Please enter at least one digit");
+		return false;
+	}
+	if(password_regex3.test(pass)==true)
+	{
+		alert("Specials characters are not allowed");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}  
+</script>
+
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 </head>
@@ -16,20 +75,17 @@
 <div class="wrapper row1">
   <header id="header" class="clear">
     <div id="hgroup">
-      <h1><a href="#">Login</a></h1>
-      <h2>
-		<?php echo 'asdasdasd'; ?></h2>
+      <h1><a href="#">Roweb</a></h1>
+      <h2>Dospinoiu Nicoleta-Larisa</h2>
     </div>
-    <nav class="custom-menu">
+    <nav>
       <ul>
-         <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="add-product.html">Add product</a></li>
-        <li><a href="login.html">Login</li>
-        <li class="last"><a class="target" href="#">Text Link</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
-	
   </header>
 </div>
 <!-- content -->
@@ -39,43 +95,20 @@
     
     
 	<div class="container">
+		<form name="Form_login" action="login.html" method="post" id="login_form" onsubmit="return validate();">
+			<h1 class="login_heading">Login</h1>
 
-	<form action="index.html" method="post">
-      
-        <h1>Sing in to continue</h1>
-        
-        <fieldset>
-          <legend><img src="images/Mail.jpg" alt=""></legend>
-          <label for="email"> Enter your email:</label>
-          <input type="text" id="email" name="email_name">
-		  
-		  <label for="password"> Password:</label>
-		  <input type="text" id="password" name="product_name">
-          
-        </fieldset>
-       
-        <!--fieldset>
-			<label for="job">Category:</label>
-			<select id="job" name="user_job">
-			  <optgroup label="First">
-				<option value="">tech</option>
-				<option value="funny">funny</option>
-				<option value="gadget">gadget</option>
-			  </optgroup>
-			  <optgroup label="Second">
-				<option value="">somthing</option>
-				<option value="funny">funny</option>
-				<option value="gadget">gadget</option>
-			  </optgroup>
-			  <optgroup label="Third">
-				<option value="">else</option>
-				<option value="funny">funny</option>
-				<option value="gadget">gadget</option>
-			  </optgroup>
-			</select>
-        </fieldset-->
-        <button type="submit">Login </button>
-      </form>
+			<fieldset>
+				<legend id="subtitle">Please fill in your details</legend>
+				<label for="login_email">Username / Email:</label>
+				<input type="email" id="login_email" name="email" required placeholder="Enter Email">
+
+				<label for="login_password">Password:</label>
+				<input type="password" id="login_pass" name="pass" required placeholder="Enter Password">
+			</fieldset>
+			<div class="" id="passwordValidation"></div>
+			<button type="submit">Login</button>
+		</form>
 	</div><!-- container -->
 
 </div>
@@ -86,34 +119,5 @@
     <p class="fl_right">Template by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
   </footer>
 </div>
-<script>
-$(function(){
-	$('.bxslider').bxSlider({
-		mode: 'horizontal',
-		moveSlides: 1,
-		slideMargin: 40,
-		infiniteLoop: true,
-		slideWidth: 660,
-		minSlides: 3,
-		maxSlides: 3,
-		speed: 800,
-	});
-	
-	$('ul.tabs li').click(function(){
-		var tab_id = $(this).attr('data-tab');
-
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
-
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	});
-	
-	$(document).on('click', '.custom-menu .target', function (e) {
-		$('.custom-menu').find('.active').removeClass('active');
-		$(this).addClass('active');
-	});
-});
-</script>
 </body>
 </html>
